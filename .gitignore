@@ -1,0 +1,14 @@
+node_modules/
+.env
+coverage/
+cache/
+artifacts/
+typechain-types/
+dist/
+build/
+__pycache__/
+*.pyc
+.idea/
+.vscode/
+*.log
+deployments/

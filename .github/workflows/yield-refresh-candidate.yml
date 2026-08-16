@@ -1,0 +1,64 @@
+name: Yield Refresh Candidate
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "37 6 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: aethra-yield-refresh-candidate
+  cancel-in-progress: true
+
+jobs:
+  build-candidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Fetch candidate snapshot
+        run: >
+          python3 backend/src/strategy_engine.py
+          --refresh
+          --limit 12
+          --timeout 180
+          --output data/refresh-candidate.json
+
+      - name: Validate candidate strictly
+        run: >
+          python3 backend/src/strategy_engine.py
+          --check-dataset
+          --fail-on-warnings
+          --max-age-hours 1
+          --output data/refresh-candidate.json
+          > data/refresh-candidate-validation.json
+
+      - name: Compare candidate to committed snapshot
+        if: always()
+        run: >
+          python3 backend/src/strategy_engine.py
+          --compare-candidate
+          --baseline data/opportunities.json
+          --candidate data/refresh-candidate.json
+          > data/refresh-candidate-comparison.json
+
+      - name: Upload candidate for manual review
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: aethra-yield-refresh-candidate-${{ github.run_id }}
+          path: |
+            data/refresh-candidate.json
+            data/refresh-candidate-validation.json
+            data/refresh-candidate-comparison.json
+          if-no-files-found: error
+          retention-days: 7

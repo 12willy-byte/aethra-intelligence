@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="zh-CN" translate="no" class="notranslate">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google" content="notranslate">
+<title>Aethra Finance - 收益情报</title>
+<style>
+:root {
+  color-scheme: light;
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --ink: #18202a;
+  --muted: #667085;
+  --line: #d9dee7;
+  --blue: #2563eb;
+  --green: #16803c;
+  --amber: #a15c07;
+  --red: #b42318;
+  --soft-blue: #e8f0ff;
+  --soft-green: #e7f6ec;
+  --soft-amber: #fff3dc;
+  --soft-red: #fee8e7;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 248px minmax(0, 1fr);
+}
+
+.sidebar {
+  border-right: 1px solid var(--line);
+  background: #fbfcfe;
+  padding: 24px 18px;
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: 760;
+  margin-bottom: 4px;
+}
+
+.scope {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+  margin-bottom: 28px;
+}
+
+.nav {
+  display: grid;
+  gap: 6px;
+}
+
+.nav button {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: #344054;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.nav button[aria-pressed="true"] {
+  background: var(--soft-blue);
+  color: var(--blue);
+  font-weight: 650;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.notice {
+  margin-top: 28px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.main {
+  min-width: 0;
+  padding: 24px;
+}
+
+.topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 18px;
+}
+
+h1 {
+  margin: 0 0 6px;
+  font-size: 26px;
+  line-height: 1.2;
+}
+
+.subtle {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.status {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.pill {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 10px;
+  background: var(--panel);
+  color: #344054;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.pill.good {
+  border-color: #9ed8b2;
+  background: var(--soft-green);
+  color: var(--green);
+}
+
+.pill.warn {
+  border-color: #f1cf8a;
+  background: var(--soft-amber);
+  color: var(--amber);
+}
+
+.pill.alert {
+  border-color: #f3aaa6;
+  background: var(--soft-red);
+  color: var(--red);
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  color: #475467;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+select, input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0 10px;
+  background: var(--panel);
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 16px;
+  align-items: start;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+th, td {
+  padding: 13px 14px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: middle;
+  font-size: 14px;
+}
+
+th {
+  color: #475467;
+  background: #fbfcfe;
+  font-size: 12px;
+  font-weight: 720;
+}
+
+tr {
+  cursor: pointer;
+}
+
+tr:hover td {
+  background: #fafcff;
+}
+
+tr.selected td {
+  background: var(--soft-blue);
+}
+
+.protocol {
+  font-weight: 720;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.risk {
+  display: inline-flex;
+  align-items: center;
+  min-width: 74px;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 5px 8px;
+  font-size: 12px;
+  font-weight: 720;
+}
+
+.risk.low { background: var(--soft-green); color: var(--green); }
+.risk.medium { background: var(--soft-amber); color: var(--amber); }
+.risk.high { background: var(--soft-red); color: var(--red); }
+
+.bar {
+  height: 8px;
+  width: 100%;
+  background: #eef1f5;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 7px;
+}
+
+.bar span {
+  display: block;
+  height: 100%;
+  background: var(--blue);
+}
+
+.apy-cell {
+  min-width: 0;
+}
+
+.apy-tag {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 680;
+  margin-top: 5px;
+  overflow-wrap: anywhere;
+}
+
+.apy-tag.reward {
+  color: var(--amber);
+}
+
+.icon-btn {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.icon-btn.saved {
+  border-color: #f2bf45;
+  background: #fff8e6;
+}
+
+.detail {
+  min-width: 0;
+  padding: 16px;
+  overflow-wrap: anywhere;
+}
+
+.detail h2 {
+  margin: 0 0 4px;
+  font-size: 18px;
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.metric {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.metric .label {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.metric .value {
+  margin-top: 3px;
+  font-size: 17px;
+  font-weight: 760;
+}
+
+.section-title {
+  color: #475467;
+  font-size: 12px;
+  font-weight: 760;
+  margin: 18px 0 8px;
+  text-transform: uppercase;
+}
+
+.factor-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.factor-list li {
+  border-left: 3px solid var(--line);
+  padding-left: 10px;
+  color: #344054;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.source-link {
+  display: inline-flex;
+  max-width: 100%;
+  margin-top: 10px;
+  color: var(--blue);
+  font-weight: 650;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.source-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  margin-top: 10px;
+}
+
+.source-links .source-link {
+  margin-top: 0;
+}
+
+.verification-list {
+  display: grid;
+  min-width: 0;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.verification-row {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 9px 10px;
+  color: #344054;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.verification-row strong {
+  display: block;
+  color: var(--ink);
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+
+.method {
+  margin-top: 16px;
+  padding: 14px;
+  background: #fbfcfe;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.qa-panel {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10;
+  width: min(420px, calc(100vw - 32px));
+  max-height: min(520px, calc(100vh - 32px));
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 16px 36px rgba(24, 32, 42, 0.18);
+  padding: 14px;
+  color: #344054;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.qa-panel h2 {
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+
+.qa-panel dl {
+  display: grid;
+  grid-template-columns: 128px minmax(0, 1fr);
+  gap: 6px 10px;
+  margin: 0;
+}
+
+.qa-panel dt {
+  color: var(--muted);
+}
+
+.qa-panel dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 960px) {
+  .shell { grid-template-columns: 1fr; }
+  .sidebar { border-right: 0; border-bottom: 1px solid var(--line); }
+  .content { grid-template-columns: 1fr; }
+  .filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 620px) {
+  .main { padding: 16px; }
+  .topbar { display: grid; }
+  .status { justify-content: flex-start; }
+  .filters { grid-template-columns: 1fr; }
+  table { display: block; }
+  thead { display: none; }
+  tbody { display: grid; }
+  tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px 12px;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  tr:hover,
+  tr.selected { background: var(--soft-blue); }
+  tr:hover td,
+  tr.selected td { background: transparent; }
+  td {
+    padding: 0;
+    border-bottom: 0;
+  }
+  td:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1 / 4;
+    min-width: 0;
+  }
+  td:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: right;
+  }
+  td:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  td:nth-child(6) {
+    grid-column: 2;
+    grid-row: 3;
+    justify-self: end;
+  }
+  td[colspan] {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+  th:nth-child(4), td:nth-child(4),
+  th:nth-child(5), td:nth-child(5) { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">Aethra Finance</div>
+    <div class="scope">非托管收益情报</div>
+    <nav class="nav" aria-label="Views">
+      <button type="button" aria-pressed="true" data-view="all"><span class="dot"></span>机会</button>
+      <button type="button" aria-pressed="false" data-view="watchlist"><span class="dot"></span>观察名单</button>
+      <button type="button" aria-pressed="false" data-view="method"><span class="dot"></span>风险方法</button>
+    </nav>
+    <div class="notice" id="datasetNotice">Aethra 不接受存款，不请求授权，不执行交易，也不保证收益。</div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1>收益机会</h1>
+        <div class="subtle" id="viewCopy">比较公开 DeFi 机会及其数据来源和风险背景。</div>
+      </div>
+      <div class="status">
+        <span class="pill">无需钱包</span>
+        <span class="pill">无托管</span>
+        <span class="pill" id="dataStatus">正在加载数据</span>
+        <span class="pill" id="snapshotStatus">快照时间未知</span>
+      </div>
+    </div>
+
+    <section class="filters" aria-label="Filters">
+      <div class="field">
+        <label for="chainFilter">链</label>
+        <select id="chainFilter" aria-label="链"></select>
+      </div>
+      <div class="field">
+        <label for="assetFilter">资产</label>
+        <select id="assetFilter" aria-label="资产"></select>
+      </div>
+      <div class="field">
+        <label for="riskFilter">风险</label>
+        <select id="riskFilter" aria-label="风险"></select>
+      </div>
+      <div class="field">
+        <label for="searchInput">搜索</label>
+        <input id="searchInput" type="search" aria-label="搜索" placeholder="协议或策略">
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="panel">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 28%;">机会</th>
+              <th style="width: 13%;">APY</th>
+              <th style="width: 15%;">风险</th>
+              <th style="width: 18%;">TVL</th>
+              <th style="width: 18%;">更新</th>
+              <th style="width: 8%;">保存</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+
+      <aside class="panel detail" id="detail"></aside>
+    </section>
+  </main>
+</div>
+
+<script>
+const fallbackOpportunities = [
+  {
+    id: "aave-ethereum-usdc",
+    chain: "Ethereum",
+    protocol: "Aave",
+    asset: "USDC",
+    strategy: "Variable lending",
+    apy: 4.5,
+    tvl: 5000000000,
+    updated: "Demo snapshot",
+    source: "https://app.aave.com/",
+    contract: "Verify with protocol",
+    audit: "Public audits available",
+    risk: "Low",
+    score: 24,
+    factors: [
+      "Mature lending protocol with broad public usage",
+      "Stablecoin asset still carries issuer and market risk",
+      "Rates can change quickly with utilization"
+    ]
+  },
+  {
+    id: "uniswap-arbitrum-eth-usdc",
+    chain: "Arbitrum",
+    protocol: "Uniswap",
+    asset: "ETH/USDC",
+    strategy: "Concentrated liquidity",
+    apy: 12.1,
+    tvl: 2000000000,
+    updated: "Demo snapshot",
+    source: "https://app.uniswap.org/",
+    contract: "Verify with protocol",
+    audit: "Public audits available",
+    risk: "Medium",
+    score: 56,
+    factors: [
+      "Liquidity positions can suffer impermanent loss",
+      "APY depends on volume, price range, and fee tier",
+      "Layer 2 bridge and sequencer assumptions apply"
+    ]
+  },
+  {
+    id: "eigenlayer-ethereum-eth",
+    chain: "Ethereum",
+    protocol: "EigenLayer",
+    asset: "ETH",
+    strategy: "Restaking",
+    apy: 6.0,
+    tvl: 12000000000,
+    updated: "Demo snapshot",
+    source: "https://app.eigenlayer.xyz/",
+    contract: "Verify with protocol",
+    audit: "Verify current status",
+    risk: "Medium",
+    score: 61,
+    factors: [
+      "Restaking adds protocol and operator risk",
+      "Reward rates may depend on future network activity",
+      "Withdrawal rules and slashing assumptions require review"
+    ]
+  },
+  {
+    id: "pendle-base-usdc",
+    chain: "Base",
+    protocol: "Pendle",
+    asset: "USDC",
+    strategy: "Yield token market",
+    apy: 9.4,
+    tvl: 300000000,
+    updated: "Demo snapshot",
+    source: "https://app.pendle.finance/",
+    contract: "Verify with protocol",
+    audit: "Verify current status",
+    risk: "High",
+    score: 74,
+    factors: [
+      "Yield token markets can be complex",
+      "Exit price can differ from expected yield",
+      "Lower liquidity may increase slippage"
+    ]
+  },
+  {
+    id: "compound-optimism-usdc",
+    chain: "Optimism",
+    protocol: "Compound",
+    asset: "USDC",
+    strategy: "Variable lending",
+    apy: 3.8,
+    tvl: 620000000,
+    updated: "Demo snapshot",
+    source: "https://app.compound.finance/",
+    contract: "Verify with protocol",
+    audit: "Public audits available",
+    risk: "Low",
+    score: 30,
+    factors: [
+      "Mature money market design",
+      "Rates depend on utilization",
+      "Layer 2 operational assumptions apply"
+    ]
+  }
+];
+
+const saved = new Set(JSON.parse(localStorage.getItem("aethra-watchlist") || "[]"));
+let opportunities = [...fallbackOpportunities];
+let datasetMetadata = {
+  source: "Fallback demo data",
+  generated_at: "Demo snapshot",
+  verification: "Fallback demo records are for local development only."
+};
+let activeView = "all";
+let selectedId = opportunities[0]?.id || null;
+
+const rows = document.getElementById("rows");
+const detail = document.getElementById("detail");
+const chainFilter = document.getElementById("chainFilter");
+const assetFilter = document.getElementById("assetFilter");
+const riskFilter = document.getElementById("riskFilter");
+const searchInput = document.getElementById("searchInput");
+const viewCopy = document.getElementById("viewCopy");
+const dataStatus = document.getElementById("dataStatus");
+const snapshotStatus = document.getElementById("snapshotStatus");
+const datasetNotice = document.getElementById("datasetNotice");
+const STALE_AFTER_HOURS = 24;
+
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[character]);
+}
+
+function safeUrl(value) {
+  try {
+    const url = new URL(value);
+    return ["http:", "https:"].includes(url.protocol) ? url.href : "#";
+  } catch {
+    return "#";
+  }
+}
+
+function money(value) {
+  if (value >= 1e9) return "$" + (value / 1e9).toFixed(1) + "B";
+  if (value >= 1e6) return "$" + (value / 1e6).toFixed(0) + "M";
+  return "$" + value.toLocaleString();
+}
+
+function formatUpdated(value) {
+  if (!value) return "未知";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return String(value);
+  return date.toISOString().slice(0, 10);
+}
+
+function formatTimestamp(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "未知时间";
+  return date.toISOString().replace("T", " ").slice(0, 16) + " UTC";
+}
+
+function formatAge(hours) {
+  if (!Number.isFinite(hours)) return "时间未知";
+  if (hours < 0) return "未来时间戳";
+  if (hours < 1) return `${Math.max(1, Math.round(hours * 60))} 分钟前`;
+  if (hours < 48) return `${Math.round(hours)} 小时前`;
+  return `${Math.round(hours / 24)} 天前`;
+}
+
+const riskLabels = {
+  Low: "低",
+  Medium: "中",
+  High: "高"
+};
+
+const apySourceLabels = {
+  "Base APY": "基础 APY",
+  "Base APY plus token rewards": "基础 APY + 代币奖励",
+  "Reward or farming APY": "奖励/激励 APY",
+  "APY source not captured": "APY 来源未记录",
+  "APY source not captured in this snapshot": "本快照未记录 APY 来源"
+};
+
+const strategyLabels = {
+  "Stable yield": "稳定收益",
+  "Yield pool": "收益池",
+  Staking: "质押",
+  "Variable lending": "浮动利率借贷",
+  "Concentrated liquidity": "集中流动性",
+  Restaking: "再质押",
+  "Yield token market": "收益代币市场",
+  "Yield opportunity": "收益机会"
+};
+
+function displayRisk(value) {
+  return riskLabels[value] || value;
+}
+
+function displayApySource(value) {
+  return apySourceLabels[value] || value;
+}
+
+function displayStrategy(value) {
+  return strategyLabels[value] || value;
+}
+
+function fillSelect(select, values, allLabel, displayValue = (value) => value) {
+  const previous = select.value;
+  select.innerHTML = "";
+  const all = document.createElement("option");
+  all.value = "";
+  all.textContent = allLabel;
+  select.appendChild(all);
+  values.forEach((value) => {
+    const option = document.createElement("option");
+    option.value = value;
+    option.textContent = displayValue(value);
+    select.appendChild(option);
+  });
+  if (values.includes(previous)) select.value = previous;
+}
+
+function refreshFilters() {
+  fillSelect(chainFilter, [...new Set(opportunities.map((item) => item.chain))].sort(), "全部链");
+  fillSelect(assetFilter, [...new Set(opportunities.map((item) => item.asset))].sort(), "全部资产");
+  fillSelect(riskFilter, ["Low", "Medium", "High"], "全部风险", displayRisk);
+}
+
+function optionalNumber(value) {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
+function apyTagClass(item) {
+  return ["base_plus_rewards", "rewards_only", "farming_pool"].includes(item.apy_composition)
+    ? "apy-tag reward"
+    : "apy-tag";
+}
+
+function apyCompositionText(item) {
+  const parts = [];
+  if (item.apy_base !== null) parts.push(`基础 ${item.apy_base.toFixed(2)}%`);
+  if (item.apy_reward !== null && Math.abs(item.apy_reward) > 0.0001) {
+    parts.push(`奖励 ${item.apy_reward.toFixed(2)}%`);
+  }
+  if (item.pool_meta) parts.push(item.pool_meta);
+  return parts.length ? parts.join(" · ") : "本次审查快照未提供基础收益和奖励拆分";
+}
+
+function normalizeOpportunity(item) {
+  const apy = Number(item.apy);
+  const tvl = Number(item.tvl);
+  const score = Number(item.score);
+  const risk = ["Low", "Medium", "High"].includes(item.risk) ? item.risk : "High";
+  const apyComposition = ["base", "base_plus_rewards", "rewards_only", "farming_pool", "unknown"].includes(item.apy_composition)
+    ? item.apy_composition
+    : "unknown";
+
+  if (!item.id || !item.protocol || !item.chain || !item.asset || !Number.isFinite(apy) || !Number.isFinite(tvl)) {
+    return null;
+  }
+
+  return {
+    id: String(item.id),
+    chain: String(item.chain),
+    protocol: String(item.protocol),
+    asset: String(item.asset),
+    strategy: String(item.strategy || "Yield opportunity"),
+    apy,
+    tvl,
+    updated: String(item.updated || datasetMetadata.generated_at || "Unknown"),
+    source: String(item.source || datasetMetadata.display_source_url || "#"),
+    source_label: String(item.source_label || datasetMetadata.source || "Data source"),
+    apy_base: optionalNumber(item.apy_base),
+    apy_reward: optionalNumber(item.apy_reward),
+    apy_source_label: String(item.apy_source_label || "APY source not captured"),
+    apy_composition: apyComposition,
+    pool_meta: String(item.pool_meta || ""),
+    reward_tokens: Array.isArray(item.reward_tokens) ? item.reward_tokens.map(String).filter(Boolean) : [],
+    contract: String(item.contract || "Verify with source"),
+    contract_address: String(item.contract_address || ""),
+    contract_role: String(item.contract_role || ""),
+    contract_verification: String(item.contract_verification || "Contract address is not verified by Aethra."),
+    audit: String(item.audit || "Verify with source"),
+    risk,
+    score: Number.isFinite(score) ? score : 100,
+    factors: Array.isArray(item.factors) ? item.factors.map(String) : [],
+    score_reasons: Array.isArray(item.score_reasons) ? item.score_reasons.map(String) : [],
+    risk_notes: Array.isArray(item.risk_notes) ? item.risk_notes.map(String) : [],
+    source_pool_id: item.source_pool_id ? String(item.source_pool_id) : "",
+    pool_reference: String(item.pool_reference || item.source_pool_id || "Pool reference unavailable"),
+    pool_verification: String(item.pool_verification || "Verify the exact pool, asset, chain, and terms with the original protocol before acting."),
+    pool_url: String(item.pool_url || ""),
+    explorer_url: String(item.explorer_url || ""),
+    related_contracts: Array.isArray(item.related_contracts)
+      ? item.related_contracts.map((contract) => ({
+          label: String(contract?.label || "Related contract"),
+          role: String(contract?.role || "Related contract"),
+          address: String(contract?.address || ""),
+          explorer_url: String(contract?.explorer_url || "")
+        }))
+      : [],
+    verification_sources: Array.isArray(item.verification_sources)
+      ? item.verification_sources.map((source) => ({
+          label: String(source?.label || "核对来源"),
+          url: String(source?.url || "")
+        }))
+      : [],
+    protocol_url: String(item.protocol_url || ""),
+    docs_url: String(item.docs_url || ""),
+    security_url: String(item.security_url || "")
+  };
+}
+
+function normalizeDataset(payload) {
+  datasetMetadata = payload?.metadata || datasetMetadata;
+  const records = Array.isArray(payload) ? payload : payload?.opportunities;
+  if (!Array.isArray(records)) return [];
+  return records.map(normalizeOpportunity).filter(Boolean);
+}
+
+function updateDatasetNotice(isFallback) {
+  let qaSnapshot = {
+    is_fallback: isFallback,
+    generated_at: datasetMetadata.generated_at || "",
+    source: datasetMetadata.source || "",
+    age_hours: null,
+    is_stale: true,
+    status_text: "无生成快照"
+  };
+
+  if (isFallback) {
+    dataStatus.textContent = "备用演示数据";
+    snapshotStatus.textContent = "无生成快照";
+    snapshotStatus.className = "pill alert";
+    datasetNotice.textContent = "当前显示备用演示数据，因为生成数据集不可用。Aethra 仍不接受存款、不请求授权、不执行交易，也不保证收益。";
+    window.__AETHRA_QA_SNAPSHOT__ = qaSnapshot;
+    return;
+  }
+
+  const generatedAt = new Date(datasetMetadata.generated_at);
+  const ageHours = Number.isNaN(generatedAt.getTime())
+    ? Number.NaN
+    : (Date.now() - generatedAt.getTime()) / 36e5;
+  const isStale = !Number.isFinite(ageHours) || ageHours > STALE_AFTER_HOURS || ageHours < -1;
+  const source = datasetMetadata.source || "Third-party data";
+  const ageCopy = formatAge(ageHours);
+
+  dataStatus.textContent = `${source} 数据集`;
+  snapshotStatus.textContent = isStale ? `快照已过期：${ageCopy}` : `快照有效：${ageCopy}`;
+  snapshotStatus.className = isStale ? "pill alert" : "pill good";
+  datasetNotice.textContent = isStale
+    ? `当前 APY 和 TVL 来自已过期的第三方快照，生成时间为 ${formatTimestamp(datasetMetadata.generated_at)}。演示或公开使用前必须刷新数据，并到原始协议核对每个机会。`
+    : `当前 APY 和 TVL 来自第三方快照，生成时间为 ${formatTimestamp(datasetMetadata.generated_at)}。采取任何行动前必须到原始协议核对每个机会。`;
+  qaSnapshot = {
+    is_fallback: false,
+    generated_at: datasetMetadata.generated_at || "",
+    source,
+    age_hours: Number.isFinite(ageHours) ? Number(ageHours.toFixed(2)) : null,
+    is_stale: isStale,
+    status_text: snapshotStatus.textContent
+  };
+  window.__AETHRA_QA_SNAPSHOT__ = qaSnapshot;
+}
+
+function collectQaState() {
+  const rowCount = rows.querySelectorAll("tr").length;
+  const visibleDataRows = [...rows.querySelectorAll("tr")].filter((row) => !row.querySelector("[colspan]")).length;
+  const hasFallbackDemo = Boolean(window.__AETHRA_QA_SNAPSHOT__?.is_fallback);
+  const hasOverflow = document.documentElement.scrollWidth > window.innerWidth;
+  const notice = datasetNotice.textContent || "";
+  return {
+    title: document.title,
+    path: window.location.pathname,
+    record_count: opportunities.length,
+    rendered_rows: rowCount,
+    visible_data_rows: visibleDataRows,
+    selected_id: selectedId,
+    snapshot: window.__AETHRA_QA_SNAPSHOT__ || null,
+    no_wallet_claim: document.body.innerText.includes("无需钱包"),
+    no_custody_claim: document.body.innerText.includes("无托管"),
+    third_party_notice: notice.includes("第三方") || notice.includes("third-party") || notice.includes("备用演示") || notice.includes("Fallback demo"),
+    horizontal_overflow: hasOverflow,
+    viewport: {
+      width: window.innerWidth,
+      height: window.innerHeight
+    }
+  };
+}
+
+function renderQaPanel() {
+  if (!new URLSearchParams(window.location.search).has("qa")) return;
+  const state = collectQaState();
+  window.__AETHRA_QA__ = state;
+  globalThis.__AETHRA_QA__ = state;
+  let panel = document.getElementById("qaPanel");
+  if (!panel) {
+    panel = document.createElement("aside");
+    panel.id = "qaPanel";
+    panel.className = "qa-panel";
+    panel.setAttribute("aria-label", "QA diagnostics");
+    document.body.appendChild(panel);
+  }
+  panel.dataset.qa = JSON.stringify(state);
+  panel.innerHTML = `
+    <h2>QA 诊断</h2>
+    <dl>
+      <dt>状态</dt><dd>${state.snapshot?.status_text || "未知"}</dd>
+      <dt>记录</dt><dd>${state.record_count}</dd>
+      <dt>行</dt><dd>${state.visible_data_rows}</dd>
+      <dt>备用数据</dt><dd>${state.snapshot?.is_fallback ? "yes" : "no"}</dd>
+      <dt>过期</dt><dd>${state.snapshot?.is_stale ? "yes" : "no"}</dd>
+      <dt>生成时间</dt><dd>${escapeHtml(state.snapshot?.generated_at || "unknown")}</dd>
+      <dt>横向溢出</dt><dd>${state.horizontal_overflow ? "yes" : "no"}</dd>
+      <dt>视口</dt><dd>${state.viewport.width} x ${state.viewport.height}</dd>
+      <dt>范围</dt><dd>${state.no_wallet_claim && state.no_custody_claim ? "read-only" : "review needed"}</dd>
+    </dl>
+  `;
+}
+
+async function loadOpportunities() {
+  try {
+    const response = await fetch("../data/opportunities.json", { cache: "no-store" });
+    if (!response.ok) throw new Error(`Dataset request failed: ${response.status}`);
+    const payload = await response.json();
+    const normalized = normalizeDataset(payload);
+    if (!normalized.length) throw new Error("Dataset contained no usable records");
+    opportunities = normalized;
+    selectedId = opportunities[0].id;
+    updateDatasetNotice(false);
+  } catch (error) {
+    datasetMetadata = {
+      source: "Fallback demo data",
+      generated_at: "Demo snapshot",
+      verification: "Fallback demo records are for local development only."
+    };
+    opportunities = fallbackOpportunities.map(normalizeOpportunity).filter(Boolean);
+    selectedId = opportunities[0]?.id || null;
+    updateDatasetNotice(true);
+  }
+  refreshFilters();
+  renderRows();
+}
+
+function filtered() {
+  const query = searchInput.value.trim().toLowerCase();
+  return opportunities.filter((item) => {
+    if (activeView === "watchlist" && !saved.has(item.id)) return false;
+    if (chainFilter.value && item.chain !== chainFilter.value) return false;
+    if (assetFilter.value && item.asset !== assetFilter.value) return false;
+    if (riskFilter.value && item.risk !== riskFilter.value) return false;
+    if (query && !(item.protocol + " " + item.strategy + " " + item.asset).toLowerCase().includes(query)) return false;
+    return true;
+  });
+}
+
+function renderRows() {
+  const items = activeView === "method" ? [] : filtered();
+  rows.innerHTML = "";
+
+  if (!items.length) {
+    const emptyCopy = activeView === "method"
+      ? "风险方法显示在详情面板中。"
+      : "没有匹配的机会。";
+    rows.innerHTML = `<tr><td colspan="6" class="subtle">${emptyCopy}</td></tr>`;
+    renderDetail(activeView === "method" ? null : undefined);
+    renderQaPanel();
+    return;
+  }
+
+  if (!items.some((item) => item.id === selectedId)) selectedId = items[0].id;
+
+  items.forEach((item) => {
+    const tr = document.createElement("tr");
+    tr.className = item.id === selectedId ? "selected" : "";
+    tr.addEventListener("click", () => {
+      selectedId = item.id;
+      renderRows();
+      renderDetail(item);
+    });
+    tr.innerHTML = `
+      <td><div class="protocol notranslate" translate="no">${escapeHtml(item.protocol)}</div><div class="meta"><span class="notranslate" translate="no">${escapeHtml(item.chain)}</span> · <span class="notranslate" translate="no">${escapeHtml(item.asset)}</span> · ${escapeHtml(displayStrategy(item.strategy))}</div></td>
+      <td class="apy-cell"><strong>APY ${item.apy.toFixed(1)}%</strong><span class="${apyTagClass(item)}">${escapeHtml(displayApySource(item.apy_source_label))}</span><div class="bar"><span style="width:${Math.min(item.apy * 5, 100)}%"></span></div></td>
+      <td><span class="risk ${item.risk.toLowerCase()}">${escapeHtml(displayRisk(item.risk))}</span></td>
+      <td>${money(item.tvl)}</td>
+      <td>${escapeHtml(formatUpdated(item.updated))}</td>
+      <td><button class="icon-btn ${saved.has(item.id) ? "saved" : ""}" title="切换观察名单" aria-label="切换观察名单" data-save="${escapeHtml(item.id)}">${saved.has(item.id) ? "−" : "+"}</button></td>
+    `;
+    rows.appendChild(tr);
+  });
+
+  rows.querySelectorAll("[data-save]").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const id = button.getAttribute("data-save");
+      if (saved.has(id)) saved.delete(id);
+      else saved.add(id);
+      localStorage.setItem("aethra-watchlist", JSON.stringify([...saved]));
+      renderRows();
+      renderDetail(opportunities.find((item) => item.id === selectedId));
+    });
+  });
+
+  renderDetail(opportunities.find((item) => item.id === selectedId));
+  renderQaPanel();
+}
+
+function renderDetail(item) {
+  if (activeView === "method") {
+    detail.innerHTML = `
+      <h2>风险方法</h2>
+      <p class="subtle">风险分数是透明指标，不是预测或投资建议。</p>
+      <div class="section-title">因素</div>
+      <ul class="factor-list">
+        <li>协议成熟度和公开使用情况</li>
+        <li>审计状态和已知事件</li>
+        <li>TVL 深度和退出流动性</li>
+        <li>资产类型和市场波动</li>
+        <li>智能合约、跨链桥和链上依赖</li>
+      </ul>
+      <div class="method">分数仅用于比较。当前数据必须以原始协议核对为准。</div>
+    `;
+    return;
+  }
+
+  if (!item) {
+    detail.innerHTML = '<h2>未选择</h2><p class="subtle">选择一个机会以查看来源和风险背景。</p>';
+    return;
+  }
+
+  const sourceUrl = safeUrl(item.source);
+  const riskItems = [...new Set([...(item.score_reasons || []), ...(item.factors || []), ...(item.risk_notes || [])])];
+  const methodCopy = datasetMetadata.verification || "Third-party data must be verified with original protocols before use.";
+  const sourceLinks = [
+    ["打开数据源", sourceUrl],
+    ["池页面", safeUrl(item.pool_url)],
+    ["官方协议", safeUrl(item.protocol_url)],
+    ["协议文档", safeUrl(item.docs_url)],
+    ["安全材料", safeUrl(item.security_url)],
+    ["链上浏览器", safeUrl(item.explorer_url)],
+    ...(item.verification_sources || []).map((source) => [source.label, safeUrl(source.url)])
+  ].filter(([, url]) => url !== "#");
+  const sourceLinkHtml = sourceLinks
+    .map(([label, url]) => `<a class="source-link" href="${escapeHtml(url)}" target="_blank" rel="noreferrer">${escapeHtml(label)}</a>`)
+    .join("");
+  const contractCopy = item.contract_address || item.contract || "未提供已核对的合约地址";
+  const contractRole = item.contract_role ? `${item.contract_role}: ` : "";
+  const relatedContractsHtml = (item.related_contracts || [])
+    .filter((contract) => contract.address)
+    .map((contract) => {
+      const explorer = safeUrl(contract.explorer_url);
+      const link = explorer === "#"
+        ? escapeHtml(contract.address)
+        : `<a class="source-link" href="${escapeHtml(explorer)}" target="_blank" rel="noreferrer">${escapeHtml(contract.address)}</a>`;
+      return `<div class="verification-row"><strong>${escapeHtml(contract.label)}</strong>${escapeHtml(contract.role)} · ${link}</div>`;
+    })
+    .join("");
+  const rewardTokenCopy = item.reward_tokens.length ? ` 奖励代币：${item.reward_tokens.join(", ")}。` : "";
+
+  detail.innerHTML = `
+    <h2 class="notranslate" translate="no">${escapeHtml(item.protocol)}</h2>
+    <div class="subtle"><span class="notranslate" translate="no">${escapeHtml(item.chain)}</span> · <span class="notranslate" translate="no">${escapeHtml(item.asset)}</span> · ${escapeHtml(displayStrategy(item.strategy))}</div>
+    <div class="metric-grid">
+      <div class="metric"><div class="label">APY</div><div class="value">${item.apy.toFixed(1)}%</div></div>
+      <div class="metric"><div class="label">风险分数</div><div class="value">${item.score}/100</div></div>
+      <div class="metric"><div class="label">TVL</div><div class="value">${money(item.tvl)}</div></div>
+      <div class="metric"><div class="label">审计</div><div class="value">${escapeHtml(item.audit)}</div></div>
+    </div>
+    <div class="section-title">APY 构成</div>
+    <div class="verification-list">
+      <div class="verification-row"><strong>APY 来源</strong>${escapeHtml(displayApySource(item.apy_source_label))} · ${escapeHtml(apyCompositionText(item))}.${escapeHtml(rewardTokenCopy)}</div>
+    </div>
+    <div class="section-title">风险因素</div>
+    <ul class="factor-list">${riskItems.map((factor) => `<li>${escapeHtml(factor)}</li>`).join("")}</ul>
+    <div class="section-title">来源</div>
+    <div class="subtle">${escapeHtml(item.source_label)} · ${escapeHtml(item.pool_reference)}</div>
+    <div class="source-links">${sourceLinkHtml}</div>
+    <div class="section-title">核对</div>
+    <div class="verification-list">
+      <div class="verification-row"><strong>池</strong>${escapeHtml(item.pool_verification)}</div>
+      <div class="verification-row"><strong>合约</strong>${escapeHtml(contractRole)}${escapeHtml(contractCopy)}. ${escapeHtml(item.contract_verification)}</div>
+      ${relatedContractsHtml}
+    </div>
+    <div class="method">${escapeHtml(methodCopy)}</div>
+  `;
+}
+
+function setView(view) {
+  activeView = view;
+  document.querySelectorAll(".nav button").forEach((button) => {
+    button.setAttribute("aria-pressed", String(button.dataset.view === view));
+  });
+  viewCopy.textContent = view === "watchlist"
+    ? "保存的机会只存储在当前浏览器本地。"
+    : view === "method"
+      ? "风险标签使用的透明评分因素。"
+      : "比较公开 DeFi 机会及其数据来源和风险背景。";
+  renderRows();
+}
+
+[chainFilter, assetFilter, riskFilter, searchInput].forEach((control) => {
+  control.addEventListener("input", renderRows);
+});
+
+document.querySelectorAll(".nav button").forEach((button) => {
+  button.addEventListener("click", () => setView(button.dataset.view));
+});
+
+loadOpportunities();
+</script>
+</body>
+</html>

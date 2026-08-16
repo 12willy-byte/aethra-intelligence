@@ -1,0 +1,986 @@
+{
+  "metadata": {
+    "source": "DeFiLlama Yields",
+    "source_url": "https://yields.llama.fi/pools",
+    "display_source_url": "https://defillama.com/yields",
+    "generated_at": "2026-08-16T01:24:07+00:00",
+    "record_count": 12,
+    "verification": "Third-party aggregator data; verify with original protocols before acting.",
+    "selection_policy": "Prefer currently reviewed pool ids when they still satisfy source filters",
+    "selection_baseline": "data/opportunities.json"
+  },
+  "opportunities": [
+    {
+      "id": "3637ce7b-529b-49c1-964c-710a50b2939c",
+      "chain": "Arbitrum",
+      "protocol": "Sky Lending",
+      "asset": "SUSDS",
+      "strategy": "Stable yield",
+      "apy": 3.52,
+      "tvl": 361790500.0,
+      "updated": "2026-08-16T01:24:07+00:00",
+      "source": "https://defillama.com/yields",
+      "source_label": "DeFiLlama Yields",
+      "contract": "0xdDb46999F8891663a8F2828d25298f70416d7610",
+      "contract_address": "0xdDb46999F8891663a8F2828d25298f70416d7610",
+      "contract_verification": "Manually matched the exact DeFiLlama pool token to the Sky-labeled sUSDS token contract on Arbitrum on 2026-07-26. This identifies the Arbitrum sUSDS token contract; it does not verify APY, TVL, rate propagation, bridge assumptions, redeemability, liquidity, or audit scope.",
+      "audit": "Not provided by DeFiLlama pool snapshot",
+      "factors": [
+        "APY and TVL are sourced from DeFiLlama's public yield snapshot",
+        "Stablecoin exposure still carries issuer, peg, and market risk",
+        "Sky-linked savings exposure depends on USDS mechanics, governance-set rates, collateral composition, and protocol accounting",
+        "Stablecoin savings products still carry issuer, peg, governance, and underlying collateral risk"
+      ],
+      "contract_role": "Arbitrum sUSDS savings token contract",
+      "bridge_dependency": true,
+      "verified": false,
+      "source_pool_id": "3637ce7b-529b-49c1-964c-710a50b2939c",
+      "pool_reference": "DeFiLlama pool id: 3637ce7b-529b-49c1-964c-710a50b2939c",
+      "pool_verification": "Aggregator pool id only; verify the exact pool, asset, chain, and terms with the original protocol before acting.",
+      "apy_base": 3.52,
+      "apy_reward": null,
+      "apy_source_label": "Base APY",
+      "apy_composition": "base",
+      "pool_meta": "",
+      "reward_tokens": [],
+      "pool_url": "https://defillama.com/yields/pool/3637ce7b-529b-49c1-964c-710a50b2939c",
+      "explorer_url": "https://arbiscan.io/address/0xdDb46999F8891663a8F2828d25298f70416d7610",
+      "related_contracts": [
+        {
+          "label": "USDS",
+          "role": "Underlying asset token on Arbitrum",
+          "address": "0x6491c05A82219b8D1479057361ff1654749b876b",
+          "explorer_url": "https://arbiscan.io/address/0x6491c05A82219b8D1479057361ff1654749b876b"
+        }
+      ],
+      "verification_sources": [
+        {
+          "label": "DeFiLlama exact pool page",
+          "url": "https://defillama.com/yields/pool/3637ce7b-529b-49c1-964c-710a50b2939c"
+        },
+        {
+          "label": "Sky sUSDS docs",
+          "url": "https://developers.skyeco.com/protocol/tokens/susds/"
+        },
+        {
+          "label": "Arbitrum Sky gateway proposal",
+          "url": "https://forum.arbitrum.foundation/t/constitutional-proposal-for-arbitrum-dao-to-register-the-sky-custom-gateway-contracts-in-the-router/28617?page=4"
+        },
+        {
+          "label": "Arbiscan address",
+          "url": "https://arbiscan.io/address/0xdDb46999F8891663a8F2828d25298f70416d7610"
+        }
+      ],
+      "protocol_url": "https://sky.money/",
+      "docs_url": "https://developers.sky.money/guides/",
+      "security_url": "https://developers.sky.money/guides/",
+      "risk_notes": [
+        "Sky-linked savings exposure depends on USDS mechanics, governance-set rates, collateral composition, and protocol accounting",
+        "Stablecoin savings products still carry issuer, peg, governance, and underlying collateral risk"
+      ],
+      "score": 48,
+      "risk": "Medium",
+      "score_reasons": [
+        "Base DeFi smart contract and market risk",
+        "Data is from a third-party aggregator, not the original protocol",
+        "Audit status is not included in the source snapshot",
+        "Moderate TVL requires liquidity review",
+        "Layer 2 or cross-chain assumptions apply"
+      ]
+    },
+    {
+      "id": "82469f6f-951d-4578-b47e-fb4df326f059",
+      "chain": "Base",
+      "protocol": "Centrifuge Protocol",
+      "asset": "USDC",
+      "strategy": "Stable yield",
+      "apy": 5.33,
+      "tvl": 50362540.0,
+      "updated": "2026-08-16T01:24:07+00:00",
+      "source": "https://defillama.com/yields",
+      "source_label": "DeFiLlama Yields",
+      "contract": "0x2AEf271F00A9d1b0DA8065D396f4E601dBD0Ef0b",
+      "contract_address": "0x2AEf271F00A9d1b0DA8065D396f4E601dBD0Ef0b",
+      "contract_verification": "Manually matched to DeFiLlama poolMeta 'Janus Henderson AAA CLO Fund' and official Centrifuge deployments on 2026-07-24. This identifies the Base USDC vault; it does not verify APY, TVL, share pricing, RWA issuer performance, liquidity, redemption timing, or audit scope.",
+      "audit": "Not provided by DeFiLlama pool snapshot",
+      "factors": [
+        "APY and TVL are sourced from DeFiLlama's public yield snapshot",
+        "Stablecoin exposure still carries issuer, peg, and market risk",
+        "Centrifuge exposure can include tokenized real-world asset, permissioning, issuer, legal, and redemption-cycle risk",
+        "Pool liquidity and underlying asset valuation should be checked before treating APY as comparable to simple money-market yield"
+      ],
+      "contract_role": "Centrifuge JAAA Base USDC vault",
+      "bridge_dependency": true,
+      "verified": false,
+      "source_pool_id": "82469f6f-951d-4578-b47e-fb4df326f059",
+      "pool_reference": "DeFiLlama pool id: 82469f6f-951d-4578-b47e-fb4df326f059",
+      "pool_verification": "Aggregator pool id only; verify the exact pool, asset, chain, and terms with the original protocol before acting.",
+      "apy_base": 5.3309,
+      "apy_reward": null,
+      "apy_source_label": "Base APY",
+      "apy_composition": "base",
+      "pool_meta": "Janus Henderson AAA CLO Fund",
+      "reward_tokens": [],
+      "pool_url": "https://app.centrifuge.io/",
+      "explorer_url": "https://basescan.org/address/0x2AEf271F00A9d1b0DA8065D396f4E601dBD0Ef0b",
+      "related_contracts": [
+        {
+          "label": "JAAA",
+          "role": "Janus Henderson AAA CLO Fund token on Base",
+          "address": "0x5a0F93D040De44e78F251b03c43be9CF317Dcf64",
+          "explorer_url": "https://basescan.org/address/0x5a0F93D040De44e78F251b03c43be9CF317Dcf64"
+        },
+        {
+          "label": "USDC",
+          "role": "Underlying vault asset on Base",
+          "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bDa02913",
+          "explorer_url": "https://basescan.org/address/0x833589fCD6eDb6E08f4c7C32D4f71b54bDa02913"
+        }
+      ],
+      "verification_sources": [
+        {
+          "label": "Centrifuge deployments",
+          "url": "https://docs.centrifuge.io/developer/protocol/deployments/"
+        },
+        {
+          "label": "Basescan address",
+          "url": "https://basescan.org/address/0x2AEf271F00A9d1b0DA8065D396f4E601dBD0Ef0b"
+        }
+      ],
+      "protocol_url": "https://centrifuge.io/",
+      "docs_url": "https://docs.centrifuge.io/",
+      "security_url": "https://docs.centrifuge.io/developer/protocol/security/",
+      "risk_notes": [
+        "Centrifuge exposure can include tokenized real-world asset, permissioning, issuer, legal, and redemption-cycle risk",
+        "Pool liquidity and underlying asset valuation should be checked before treating APY as comparable to simple money-market yield"
+      ],
+      "score": 56,
+      "risk": "Medium",
+      "score_reasons": [
+        "Base DeFi smart contract and market risk",
+        "Data is from a third-party aggregator, not the original protocol",
+        "Audit status is not included in the source snapshot",
+        "Lower TVL can increase liquidity and exit risk",
+        "Layer 2 or cross-chain assumptions apply"
+      ]
+    },
+    {
+      "id": "747c1d2a-c668-4682-b9f9-296708a3dd90",
+      "chain": "Ethereum",
+      "protocol": "Lido",
+      "asset": "STETH",
+      "strategy": "Yield pool",
+      "apy": 2.17,
+      "tvl": 17887962025.0,
+      "updated": "2026-08-16T01:24:07+00:00",
+      "source": "https://defillama.com/yields",
+      "source_label": "DeFiLlama Yields",
+      "contract": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+      "contract_address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+      "contract_verification": "Manually matched to the official Lido deployed contracts page on 2026-07-24. This identifies the Lido/stETH token proxy; it is not a claim that APY, TVL, or audit scope is verified by Aethra.",
+      "audit": "Not provided by DeFiLlama pool snapshot",
+      "factors": [
+        "APY and TVL are sourced from DeFiLlama's public yield snapshot",
+        "Non-stable asset exposure can be volatile",
+        "Liquid staking exposure can include validator performance, oracle, withdrawal queue, governance, and stETH liquidity risk",
+        "stETH and wrapped variants can trade away from ETH under stressed market conditions"
+      ],
+      "contract_role": "Lido and stETH token proxy",
+      "bridge_dependency": false,
+      "verified": true,
+      "source_pool_id": "747c1d2a-c668-4682-b9f9-296708a3dd90",
+      "pool_reference": "DeFiLlama pool id: 747c1d2a-c668-4682-b9f9-296708a3dd90",
+      "pool_verification": "Aggregator pool id only; verify the exact pool, asset, chain, and terms with the original protocol before acting.",
+      "apy_base": 2.169,
+      "apy_reward": null,
+      "apy_source_label": "Base APY",
+      "apy_composition": "base",
+      "pool_meta": "",
+      "reward_tokens": [],
+      "pool_url": "https://stake.lido.fi/",
+      "explorer_url": "https://etherscan.io/address/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+      "related_contracts": [],
+      "verification_sources": [
+        {
+          "label": "Lido deployed contracts",
+          "url": "https://docs.lido.fi/deployed-contracts/"
+        },
+        {
+          "label": "Etherscan address",
+          "url": "https://etherscan.io/address/0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84"
+        }
+      ],
+      "protocol_url": "https://stake.lido.fi/",
+      "docs_url": "https://docs.lido.fi/",
+      "security_url": "https://docs.lido.fi/security/audits/",
+      "risk_notes": [
+        "Liquid staking exposure can include validator performance, oracle, withdrawal queue, governance, and stETH liquidity risk",
+        "stETH and wrapped variants can trade away from ETH under stressed market conditions"
+      ],
+      "score": 40,
+      "risk": "Medium",
+      "score_reasons": [
+        "Base DeFi smart contract and market risk",
+        "Data is from a third-party aggregator, not the original protocol",
+        "Audit status is not included in the source snapshot"
+      ],
+      "verifiedAt": "2026-08-16T01:24:10.854030+00:00",
+      "verifiedSource": "https://docs.lido.fi/integrations/api/"
+    },
+    {
+      "id": "d8c4eff5-c8a9-46fc-a888-057c4c668e72",
+      "chain": "Ethereum",
+      "protocol": "Sky Lending",
+      "asset": "SUSDS",
+      "strategy": "Stable yield",
+      "apy": 3.52,
+      "tvl": 4725546808.0,
+      "updated": "2026-08-16T01:24:07+00:00",
+      "source": "https://defillama.com/yields",
+      "source_label": "DeFiLlama Yields",
+      "contract": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+      "contract_address": "0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+      "contract_verification": "Manually matched to official Sky documentation on 2026-07-24. This identifies the sUSDS token/vault proxy; it is not a claim that APY, TVL, or audit scope is verified by Aethra.",
+      "audit": "Not provided by DeFiLlama pool snapshot",
+      "factors": [
+        "APY and TVL are sourced from DeFiLlama's public yield snapshot",
+        "Stablecoin exposure still carries issuer, peg, and market risk",
+        "Sky-linked savings exposure depends on USDS mechanics, governance-set rates, collateral composition, and protocol accounting",
+        "Stablecoin savings products still carry issuer, peg, governance, and underlying collateral risk"
+      ],
+      "contract_role": "sUSDS ERC-4626 token and vault proxy",
+      "bridge_dependency": false,
+      "verified": false,
+      "source_pool_id": "d8c4eff5-c8a9-46fc-a888-057c4c668e72",
+      "pool_reference": "DeFiLlama pool id: d8c4eff5-c8a9-46fc-a888-057c4c668e72",
+      "pool_verification": "Aggregator pool id only; verify the exact pool, asset, chain, and terms with the original protocol before acting.",
+      "apy_base": 3.52,
+      "apy_reward": null,
+      "apy_source_label": "Base APY",
+      "apy_composition": "base",
+      "pool_meta": "",
+      "reward_tokens": [],
+      "pool_url": "https://sky.money/susds",
+      "explorer_url": "https://etherscan.io/address/0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD",
+      "related_contracts": [],
+      "verification_sources": [
+        {
+          "label": "Sky sUSDS docs",
+          "url": "https://developers.skyeco.com/protocol/tokens/susds/"
+        },
+        {
+          "label": "Sky Base bridge token table",
+          "url": "https://developers.skyeco.com/guides/skylink/base-eth-native-bridge/"
+        },
+        {
+          "label": "Etherscan address",
+          "url": "https://etherscan.io/address/0xa3931d71877C0E7a3148CB7Eb4463524FEc27fbD"
+        }
+      ],
+      "protocol_url": "https://sky.money/",
+      "docs_url": "https://developers.sky.money/guides/",
+      "security_url": "https://developers.sky.money/guides/",
+      "risk_notes": [
+        "Sky-linked savings exposure depends on USDS mechanics, governance-set rates, collateral composition, and protocol accounting",
+        "Stablecoin savings products still carry issuer, peg, governance, and underlying collateral risk"
+      ],
+      "score": 32,
+      "risk": "Low",
+      "score_reasons": [
+        "Base DeFi smart contract and market risk",
+        "Data is from a third-party aggregator, not the original protocol",
+        "Audit status is not included in the source snapshot"
+      ]
+    },
+    {
+      "id": "46bd2bdf-6d92-4066-b482-e885ee172264",
+      "chain": "Ethereum",
+      "protocol": "Ether.fi Stake",
+      "asset": "WEETH",
+      "strategy": "Staking",
+      "apy": 2.37,
+      "tvl": 3719629259.0,
+      "updated": "2026-08-16T01:24:07+00:00",
+      "source": "https://defillama.com/yields",
+      "source_label": "DeFiLlama Yields",
+      "contract": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
+      "contract_address": "0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
+      "contract_verification": "Manually matched to the official ether.fi deployed contracts page on 2026-07-24. This identifies the weETH token contract and related protocol contracts; it is not a claim that APY, TVL, liquidity, redemption behavior, or audit scope is verified by Aethra.",
+      "audit": "Not provided by DeFiLlama pool snapshot",
+      "factors": [
+        "APY and TVL are sourced from DeFiLlama's public yield snapshot",
+        "Non-stable asset exposure can be volatile",
+        "Part of APY may come from token rewards",
+        "Liquid restaking exposure can include validator, operator, withdrawal, slashing, and restaking-layer risk",
+        "Token rewards and restaking incentives can change and may not represent durable base yield"
+      ],
+      "contract_role": "weETH ERC-20 liquid restaking token",
+      "bridge_dependency": false,
+      "verified": false,
+      "source_pool_id": "46bd2bdf-6d92-4066-b482-e885ee172264",
+      "pool_reference": "DeFiLlama pool id: 46bd2bdf-6d92-4066-b482-e885ee172264",
+      "pool_verification": "Aggregator pool id only; verify the exact pool, asset, chain, and terms with the original protocol before acting.",
+      "apy_base": 2.3705,
+      "apy_reward": 0.0015,
+      "apy_source_label": "Base APY plus token rewards",
+      "apy_composition": "base_plus_rewards",
+      "pool_meta": "",
+      "reward_tokens": [
+        "0x8F08B70456eb22f6109F57b8fafE862ED28E6040"
+      ],
+      "pool_url": "https://www.ether.fi/app/weeth",
+      "explorer_url": "https://etherscan.io/address/0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee",
+      "related_contracts": [
+        {
+          "label": "eETH",
+          "role": "ether.fi liquid staking token related to weETH wrapping",
+          "address": "0x35fA164735182de50811E8e2E824cFb9B6118ac2",
+          "explorer_url": "https://etherscan.io/address/0x35fA164735182de50811E8e2E824cFb9B6118ac2"
+        },
+        {
+          "label": "Liquidity Pool",
+          "role": "ether.fi mainnet liquidity pool contract",
+          "address": "0x308861A430be4cce5502d0A12724771Fc6DaF216",
+          "explorer_url": "https://etherscan.io/address/0x308861A430be4cce5502d0A12724771Fc6DaF216"
+        }
+      ],
+      "verification_sources": [
+        {
+          "label": "ether.fi deployed contracts",
+          "url": "https://etherfi.gitbook.io/etherfi/contracts-and-integrations/deployed-contracts"
+        },
+        {
+          "label": "Etherscan address",
+          "url": "https://etherscan.io/address/0xCd5fE23C85820F7B72D0926FC9b05b43E359b7ee"
+        }
+      ],
+      "protocol_url": "https://ether.fi/",
+      "docs_url": "https://etherfi.gitbook.io/etherfi/",
+      "security_url": "https://etherfi.gitbook.io/etherfi/security/audits",
+      "risk_notes": [
+        "Liquid restaking exposure can include validator, operator, withdrawal, slashing, and restaking-layer risk",
+        "Token rewards and restaking incentives can change and may not represent durable base yield"
+      ],
+      "score": 46,
+      "risk": "Medium",
+      "score_reasons": [
+        "Base DeFi smart contract and market risk",
+        "Data is from a third-party aggregator, not the original protocol",
+        "Audit status is not included in the source snapshot"
+      ]
+    },
+    {
+      "id": "43641cf5-a92e-416b-bce9-27113d3c0db6",
+      "chain": "Ethereum",
+      "protocol": "Maple",
+      "asset": "USDC",
+      "strategy": "Stable yield",
+      "apy": 4.83,
+      "tvl": 2557643576.0,
+      "updated": "2026-08-16T01:24:07+00:00",
+      "source": "https://defillama.com/yields",
+      "source_label": "DeFiLlama Yields",
+      "contract": "0x80ac24aA929eaF5013f6436cdA2a7ba190f5Cc0b",
+      "contract_address": "0x80ac24aA929eaF5013f6436cdA2a7ba190f5Cc0b",
+      "contract_verification": "Manually matched to DeFiLlama poolMeta 'Syrup USDC' and official Syrup addresses on 2026-07-24. This identifies the Syrup USDC pool contract; it does not verify APY, TVL, borrower credit quality, collateral, withdrawal queue timing, or audit scope.",
+      "audit": "Not provided by DeFiLlama pool snapshot",
+      "factors": [
+        "APY and TVL are sourced from DeFiLlama's public yield snapshot",
+        "Stablecoin exposure still carries issuer, peg, and market risk",
+        "Maple pools can include borrower credit, collateral, pool delegate, withdrawal, and real-world counterparty risk",
+        "Private credit or institutional lending yield should not be compared with overcollateralized lending without reading pool terms"
+      ],
+      "contract_role": "Maple Syrup USDC pool contract",
+      "bridge_dependency": false,
+      "verified": false,
+      "source_pool_id": "43641cf5-a92e-416b-bce9-27113d3c0db6",
+      "pool_reference": "DeFiLlama pool id: 43641cf5-a92e-416b-bce9-27113d3c0db6",
+      "pool_verification": "Aggregator pool id only; verify the exact pool, asset, chain, and terms with the original protocol before acting.",
+      "apy_base": 4.8289,
+      "apy_reward": 0.0,
+      "apy_source_label": "Base APY",
+      "apy_composition": "base",
+      "pool_meta": "Syrup USDC",
+      "reward_tokens": [],
+      "pool_url": "https://app.maple.finance/earn",
+      "explorer_url": "https://etherscan.io/address/0x80ac24aA929eaF5013f6436cdA2a7ba190f5Cc0b",
+      "related_contracts": [
+        {
+          "label": "USDC",
+          "role": "Underlying pool asset",
+          "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+          "explorer_url": "https://etherscan.io/address/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+        },
+        {
+          "label": "PoolManager",
+          "role": "Syrup USDC pool manager",
+          "address": "0x7aD5fFa5fdF509E30186F4609c2f6269f4B6158F",
+          "explorer_url": "https://etherscan.io/address/0x7aD5fFa5fdF509E30186F4609c2f6269f4B6158F"
+        },
+        {
+          "label": "WithdrawalManagerQueue",
+          "role": "Syrup USDC withdrawal queue manager",
+          "address": "0x1bc47a0Dd0FdaB96E9eF982fdf1F34DC6207cfE3",
+          "explorer_url": "https://etherscan.io/address/0x1bc47a0Dd0FdaB96E9eF982fdf1F34DC6207cfE3"
+        },
+        {
+          "label": "SyrupRouter",
+          "role": "Syrup USDC user action router",
+          "address": "0x134cCaaA4F1e4552eC8aEcb9E4A2360dDcF8df76",
+          "explorer_url": "https://etherscan.io/address/0x134cCaaA4F1e4552eC8aEcb9E4A2360dDcF8df76"
+        }
+      ],
+      "verification_sources": [
+        {
+          "label": "Syrup addresses",
+          "url": "https://syrup.gitbook.io/syrup/technical-resources/addresses"
+        },
+        {
+          "label": "Maple integration docs",
+          "url": "https://docs.maple.finance/integrate/get-started"
+        },
+        {
+          "label": "Maple withdrawal docs",
+          "url": "https://docs.maple.finance/syrupusdc-for-lenders/risk"
+        },
+        {
+          "label": "Etherscan address",
+          "url": "https://etherscan.io/address/0x80ac24aA929eaF5013f6436cdA2a7ba190f5Cc0b"
+        }
+      ],
+      "protocol_url": "https://maple.finance/",
+      "docs_url": "https://docs.maple.finance/",
+      "security_url": "https://docs.maple.finance/technical-resources/security/security",
+      "risk_notes": [
+        "Maple pools can include borrower credit, collateral, pool delegate, withdrawal, and real-world counterparty risk",
+        "Private credit or institutional lending yield should not be compared with overcollateralized lending without reading pool terms"
+      ],
+      "score": 32,
+      "risk": "Low",
+      "score_reasons": [
+        "Base DeFi smart contract and market risk",
+        "Data is from a third-party aggregator, not the original protocol",
+        "Audit status is not included in the source snapshot"
+      ]
+    },
+    {
+      "id": "8edfdf02-cdbb-43f7-bca6-954e5fe56813",
+      "chain": "Ethereum",
+      "protocol": "Maple",
+      "asset": "USDT",
+      "strategy": "Stable yield",
+      "apy": 4.11,
+      "tvl": 935607396.0,
+      "updated": "2026-08-16T01:24:07+00:00",
+      "source": "https://defillama.com/yields",
+      "source_label": "DeFiLlama Yields",
+      "contract": "0x356B8d89c1e1239Cbbb9dE4815c39A1474d5BA7D",
+      "contract_address": "0x356B8d89c1e1239Cbbb9dE4815c39A1474d5BA7D",
+      "contract_verification": "Manually matched to DeFiLlama poolMeta 'Syrup USDT' and official Syrup addresses on 2026-07-24. This identifies the Syrup USDT pool contract; it does not verify APY, TVL, borrower credit quality, collateral, withdrawal queue timing, or audit scope.",
+      "audit": "Not provided by DeFiLlama pool snapshot",
+      "factors": [
+        "APY and TVL are sourced from DeFiLlama's public yield snapshot",
+        "Stablecoin exposure still carries issuer, peg, and market risk",
+        "Maple pools can include borrower credit, collateral, pool delegate, withdrawal, and real-world counterparty risk",
+        "Private credit or institutional lending yield should not be compared with overcollateralized lending without reading pool terms"
+      ],
+      "contract_role": "Maple Syrup USDT pool contract",
+      "bridge_dependency": false,
+      "verified": false,
+      "source_pool_id": "8edfdf02-cdbb-43f7-bca6-954e5fe56813",
+      "pool_reference": "DeFiLlama pool id: 8edfdf02-cdbb-43f7-bca6-954e5fe56813",
+      "pool_verification": "Aggregator pool id only; verify the exact pool, asset, chain, and terms with the original protocol before acting.",
+      "apy_base": 4.1089,
+      "apy_reward": 0.0,
+      "apy_source_label": "Base APY",
+      "apy_composition": "base",
+      "pool_meta": "Syrup USDT",
+      "reward_tokens": [],
+      "pool_url": "https://app.maple.finance/earn",
+      "explorer_url": "https://etherscan.io/address/0x356B8d89c1e1239Cbbb9dE4815c39A1474d5BA7D",
+      "related_contracts": [
+        {
+          "label": "USDT",
+          "role": "Underlying pool asset",
+          "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+          "explorer_url": "https://etherscan.io/address/0xdAC17F958D2ee523a2206206994597C13D831ec7"
+        },
+        {
+          "label": "PoolManager",
+          "role": "Syrup USDT pool manager",
+          "address": "0x0cdA32E08B48bFDDbc7eE96B44b09cf286F9E21a",
+          "explorer_url": "https://etherscan.io/address/0x0cdA32E08B48bFDDbc7eE96B44b09cf286F9E21a"
+        },
+        {
+          "label": "WithdrawalManagerQueue",
+          "role": "Syrup USDT withdrawal queue manager",
+          "address": "0x86eBDf902d800F2a82038290B6DBb2A5eE29eB8C",
+          "explorer_url": "https://etherscan.io/address/0x86eBDf902d800F2a82038290B6DBb2A5eE29eB8C"
+        },
+        {
+          "label": "SyrupRouter",
+          "role": "Syrup USDT user action router",
+          "address": "0xF007476Bb27430795138C511F18F821e8D1e5Ee2",
+          "explorer_url": "https://etherscan.io/address/0xF007476Bb27430795138C511F18F821e8D1e5Ee2"
+        }
+      ],
+      "verification_sources": [
+        {
+          "label": "Syrup addresses",
+          "url": "https://syrup.gitbook.io/syrup/technical-resources/addresses"
+        },
+        {
+          "label": "Maple integration docs",
+          "url": "https://docs.maple.finance/integrate/get-started"
+        },
+        {
+          "label": "Maple withdrawal docs",
+          "url": "https://docs.maple.finance/syrupusdc-for-lenders/risk"
+        },
+        {
+          "label": "Etherscan address",
+          "url": "https://etherscan.io/address/0x356B8d89c1e1239Cbbb9dE4815c39A1474d5BA7D"
+        }
+      ],
+      "protocol_url": "https://maple.finance/",
+      "docs_url": "https://docs.maple.finance/",
+      "security_url": "https://docs.maple.finance/technical-resources/security/security",
+      "risk_notes": [
+        "Maple pools can include borrower credit, collateral, pool delegate, withdrawal, and real-world counterparty risk",
+        "Private credit or institutional lending yield should not be compared with overcollateralized lending without reading pool terms"
+      ],
+      "score": 32,
+      "risk": "Low",
+      "score_reasons": [
+        "Base DeFi smart contract and market risk",
+        "Data is from a third-party aggregator, not the original protocol",
+        "Audit status is not included in the source snapshot"
+      ]
+    },
+    {
+      "id": "ff1bb959-d160-4906-bad2-d3e37a1e92e8",
+      "chain": "Ethereum",
+      "protocol": "Centrifuge Protocol",
+      "asset": "USDS",
+      "strategy": "Stable yield",
+      "apy": 3.84,
+      "tvl": 872311894.0,
+      "updated": "2026-08-16T01:24:07+00:00",
+      "source": "https://defillama.com/yields",
+      "source_label": "DeFiLlama Yields",
+      "contract": "0x381f4f3b43c30b78c1f7777553236e57bb8ae9ff",
+      "contract_address": "0x381f4f3b43c30b78c1f7777553236e57bb8ae9ff",
+      "contract_verification": "Manually matched to DeFiLlama poolMeta 'Janus Henderson Treasury Fund' and official Centrifuge deployments on 2026-07-24. This identifies the Ethereum USDS vault; it does not verify APY, TVL, share pricing, RWA issuer performance, liquidity, redemption timing, or audit scope.",
+      "audit": "Not provided by DeFiLlama pool snapshot",
+      "factors": [
+        "APY and TVL are sourced from DeFiLlama's public yield snapshot",
+        "Stablecoin exposure still carries issuer, peg, and market risk",
+        "Centrifuge exposure can include tokenized real-world asset, permissioning, issuer, legal, and redemption-cycle risk",
+        "Pool liquidity and underlying asset valuation should be checked before treating APY as comparable to simple money-market yield"
+      ],
+      "contract_role": "Centrifuge JTRSY Ethereum USDS vault",
+      "bridge_dependency": false,
+      "verified": true,
+      "source_pool_id": "ff1bb959-d160-4906-bad2-d3e37a1e92e8",
+      "pool_reference": "DeFiLlama pool id: ff1bb959-d160-4906-bad2-d3e37a1e92e8",
+      "pool_verification": "Aggregator pool id only; verify the exact pool, asset, chain, and terms with the original protocol before acting.",
+      "apy_base": 3.84,
+      "apy_reward": null,
+      "apy_source_label": "Base APY",
+      "apy_composition": "base",
+      "pool_meta": "Janus Henderson Treasury Fund",
+      "reward_tokens": [],
+      "pool_url": "https://app.centrifuge.io/",
+      "explorer_url": "https://etherscan.io/address/0x381f4f3b43c30b78c1f7777553236e57bb8ae9ff",
+      "related_contracts": [
+        {
+          "label": "JTRSY",
+          "role": "Janus Henderson Treasury Fund token on Ethereum",
+          "address": "0x8c213ee79581ff4984583c6a801e5263418c4b86",
+          "explorer_url": "https://etherscan.io/address/0x8c213ee79581ff4984583c6a801e5263418c4b86"
+        },
+        {
+          "label": "USDS",
+          "role": "Underlying vault asset on Ethereum",
+          "address": "0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+          "explorer_url": "https://etherscan.io/address/0xdC035D45d973E3EC169d2276DDab16f1e407384F"
+        }
+      ],
+      "verification_sources": [
+        {
+          "label": "Centrifuge deployments",
+          "url": "https://docs.centrifuge.io/developer/protocol/deployments/"
+        },
+        {
+          "label": "Etherscan address",
+          "url": "https://etherscan.io/address/0x381f4f3b43c30b78c1f7777553236e57bb8ae9ff"
+        }
+      ],
+      "protocol_url": "https://centrifuge.io/",
+      "docs_url": "https://docs.centrifuge.io/",
+      "security_url": "https://docs.centrifuge.io/developer/protocol/security/",
+      "risk_notes": [
+        "Centrifuge exposure can include tokenized real-world asset, permissioning, issuer, legal, and redemption-cycle risk",
+        "Pool liquidity and underlying asset valuation should be checked before treating APY as comparable to simple money-market yield"
+      ],
+      "score": 32,
+      "risk": "Low",
+      "score_reasons": [
+        "Base DeFi smart contract and market risk",
+        "Data is from a third-party aggregator, not the original protocol",
+        "Audit status is not included in the source snapshot"
+      ],
+      "verifiedAt": "2026-08-16T01:24:10.854030+00:00",
+      "verifiedSource": "https://api.centrifuge.io/"
+    },
+    {
+      "id": "e880e828-ca59-4ec6-8d4f-27182a4dc23d",
+      "chain": "Ethereum",
+      "protocol": "AAVE V3",
+      "asset": "WETH",
+      "strategy": "Yield pool",
+      "apy": 1.45,
+      "tvl": 685556366.0,
+      "updated": "2026-08-16T01:24:07+00:00",
+      "source": "https://defillama.com/yields",
+      "source_label": "DeFiLlama Yields",
+      "contract": "0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2",
+      "contract_address": "0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2",
+      "contract_verification": "Manually matched to Aave address-book and Aave governance references on 2026-07-24. This is the market-level Pool proxy. The related-contracts section lists the WETH reserve's aToken and underlying token; none of these fields verify APY, TVL, or audit scope.",
+      "audit": "Not provided by DeFiLlama pool snapshot",
+      "factors": [
+        "APY and TVL are sourced from DeFiLlama's public yield snapshot",
+        "Non-stable asset exposure can be volatile",
+        "Aave positions depend on oracle pricing, liquidation parameters, interest-rate curves, and governance-controlled market settings",
+        "Supplying assets does not remove smart contract, bad-debt, asset issuer, or market liquidity risk"
+      ],
+      "contract_role": "Aave V3 Ethereum Pool proxy, shared by multiple reserves",
+      "bridge_dependency": false,
+      "verified": true,
+      "source_pool_id": "e880e828-ca59-4ec6-8d4f-27182a4dc23d",
+      "pool_reference": "DeFiLlama pool id: e880e828-ca59-4ec6-8d4f-27182a4dc23d",
+      "pool_verification": "Aggregator pool id only; verify the exact pool, asset, chain, and terms with the original protocol before acting.",
+      "apy_base": 1.4549,
+      "apy_reward": null,
+      "apy_source_label": "Base APY",
+      "apy_composition": "base",
+      "pool_meta": "",
+      "reward_tokens": [],
+      "pool_url": "https://app.aave.com/",
+      "explorer_url": "https://etherscan.io/address/0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2",
+      "related_contracts": [
+        {
+          "label": "aEthWETH",
+          "role": "Aave V3 Ethereum aToken for supplied WETH",
+          "address": "0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8",
+          "explorer_url": "https://etherscan.io/address/0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8"
+        },
+        {
+          "label": "WETH",
+          "role": "Underlying reserve asset",
+          "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+          "explorer_url": "https://etherscan.io/address/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+        }
+      ],
+      "verification_sources": [
+        {
+          "label": "Aave address-book",
+          "url": "https://www.npmjs.com/package/@aave-dao/aave-address-book"
+        },
+        {
+          "label": "Aave tokenlist",
+          "url": "https://github.com/aave-dao/aave-address-book/blob/main/tokenlist.json"
+        },
+        {
+          "label": "Aave governance deployment reference",
+          "url": "https://governance.aave.com/t/bgd-aave-v3-ethereum-new-deployment-vs-aave-v2-upgrade/9990?page=2"
+        },
+        {
+          "label": "Etherscan address",
+          "url": "https://etherscan.io/address/0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2"
+        }
+      ],
+      "protocol_url": "https://app.aave.com/",
+      "docs_url": "https://aave.com/docs",
+      "security_url": "https://github.com/aave-dao/aave-v3-origin/tree/main/audits",
+      "risk_notes": [
+        "Aave positions depend on oracle pricing, liquidation parameters, interest-rate curves, and governance-controlled market settings",
+        "Supplying assets does not remove smart contract, bad-debt, asset issuer, or market liquidity risk"
+      ],
+      "score": 40,
+      "risk": "Medium",
+      "score_reasons": [
+        "Base DeFi smart contract and market risk",
+        "Data is from a third-party aggregator, not the original protocol",
+        "Audit status is not included in the source snapshot"
+      ],
+      "verifiedAt": "2026-08-16T01:24:10.854030+00:00",
+      "verifiedSource": "https://api.v3.aave.com/graphql"
+    },
+    {
+      "id": "54e9b138-3146-4c1f-8dce-1cb948f5ef96",
+      "chain": "Ethereum",
+      "protocol": "Sparklend",
+      "asset": "USDS",
+      "strategy": "Stable yield",
+      "apy": 2.98,
+      "tvl": 543916999.0,
+      "updated": "2026-08-16T01:24:07+00:00",
+      "source": "https://defillama.com/yields",
+      "source_label": "DeFiLlama Yields",
+      "contract": "0xC13e21B648A5Ee794902342038FF3aDAB66BE987",
+      "contract_address": "0xC13e21B648A5Ee794902342038FF3aDAB66BE987",
+      "contract_verification": "Manually matched to the Spark Address Registry on 2026-07-24. This is the SparkLend market-level Pool proxy. The related-contracts section lists the USDS reserve's spToken, debt token, and underlying token; none of these fields verify APY, TVL, reserve parameters, liquidity, or audit scope.",
+      "audit": "Not provided by DeFiLlama pool snapshot",
+      "factors": [
+        "APY and TVL are sourced from DeFiLlama's public yield snapshot",
+        "Stablecoin exposure still carries issuer, peg, and market risk",
+        "Part of APY may come from token rewards",
+        "Spark savings exposure can depend on Sky rates, Spark allocation strategy, bridge deployment, and the backing of accepted assets",
+        "Official Spark materials should be checked for current audit report scope, bug bounty coverage, and product-specific withdrawal rules"
+      ],
+      "contract_role": "SparkLend Pool proxy, shared by multiple reserves",
+      "bridge_dependency": false,
+      "verified": false,
+      "source_pool_id": "54e9b138-3146-4c1f-8dce-1cb948f5ef96",
+      "pool_reference": "DeFiLlama pool id: 54e9b138-3146-4c1f-8dce-1cb948f5ef96",
+      "pool_verification": "Aggregator pool id only; verify the exact pool, asset, chain, and terms with the original protocol before acting.",
+      "apy_base": null,
+      "apy_reward": 2.9772,
+      "apy_source_label": "Reward or farming APY",
+      "apy_composition": "rewards_only",
+      "pool_meta": "SPK Farming Pool",
+      "reward_tokens": [
+        "0xc20059e0317DE91738d13af027DfC4a50781b066"
+      ],
+      "pool_url": "https://app.spark.fi/",
+      "explorer_url": "https://etherscan.io/address/0xC13e21B648A5Ee794902342038FF3aDAB66BE987",
+      "related_contracts": [
+        {
+          "label": "USDS spToken",
+          "role": "SparkLend supplied USDS position token",
+          "address": "0xC02aB1A5eaA8d1B114EF786D9bde108cD4364359",
+          "explorer_url": "https://etherscan.io/address/0xC02aB1A5eaA8d1B114EF786D9bde108cD4364359"
+        },
+        {
+          "label": "USDS debt token",
+          "role": "SparkLend variable debt token for borrowed USDS",
+          "address": "0x8c147debea24Fb98ade8dDa4bf142992928b449e",
+          "explorer_url": "https://etherscan.io/address/0x8c147debea24Fb98ade8dDa4bf142992928b449e"
+        },
+        {
+          "label": "USDS",
+          "role": "Underlying reserve asset",
+          "address": "0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+          "explorer_url": "https://etherscan.io/address/0xdC035D45d973E3EC169d2276DDab16f1e407384F"
+        }
+      ],
+      "verification_sources": [
+        {
+          "label": "Spark deployments docs",
+          "url": "https://docs.spark.fi/dev/deployments/"
+        },
+        {
+          "label": "SparkLend address registry",
+          "url": "https://github.com/sparkdotfi/spark-address-registry/blob/master/src/SparkLend.sol"
+        },
+        {
+          "label": "Spark Ethereum address registry",
+          "url": "https://github.com/sparkdotfi/spark-address-registry/blob/master/src/Ethereum.sol"
+        },
+        {
+          "label": "Etherscan address",
+          "url": "https://etherscan.io/address/0xC13e21B648A5Ee794902342038FF3aDAB66BE987"
+        }
+      ],
+      "protocol_url": "https://spark.fi/",
+      "docs_url": "https://docs.spark.fi/",
+      "security_url": "https://spark.fi/",
+      "risk_notes": [
+        "Spark savings exposure can depend on Sky rates, Spark allocation strategy, bridge deployment, and the backing of accepted assets",
+        "Official Spark materials should be checked for current audit report scope, bug bounty coverage, and product-specific withdrawal rules"
+      ],
+      "score": 38,
+      "risk": "Low",
+      "score_reasons": [
+        "Base DeFi smart contract and market risk",
+        "Data is from a third-party aggregator, not the original protocol",
+        "Audit status is not included in the source snapshot"
+      ]
+    },
+    {
+      "id": "f981a304-bb6c-45b8-b0c5-fd2f515ad23a",
+      "chain": "Ethereum",
+      "protocol": "AAVE V3",
+      "asset": "USDT",
+      "strategy": "Stable yield",
+      "apy": 2.93,
+      "tvl": 399799347.0,
+      "updated": "2026-08-16T01:24:07+00:00",
+      "source": "https://defillama.com/yields",
+      "source_label": "DeFiLlama Yields",
+      "contract": "0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2",
+      "contract_address": "0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2",
+      "contract_verification": "Manually matched to Aave address-book and Aave governance references on 2026-07-24. This is the market-level Pool proxy. The related-contracts section lists the USDT reserve's aToken and underlying token; none of these fields verify APY, TVL, or audit scope.",
+      "audit": "Not provided by DeFiLlama pool snapshot",
+      "factors": [
+        "APY and TVL are sourced from DeFiLlama's public yield snapshot",
+        "Stablecoin exposure still carries issuer, peg, and market risk",
+        "Aave positions depend on oracle pricing, liquidation parameters, interest-rate curves, and governance-controlled market settings",
+        "Supplying assets does not remove smart contract, bad-debt, asset issuer, or market liquidity risk"
+      ],
+      "contract_role": "Aave V3 Ethereum Pool proxy, shared by multiple reserves",
+      "bridge_dependency": false,
+      "verified": true,
+      "source_pool_id": "f981a304-bb6c-45b8-b0c5-fd2f515ad23a",
+      "pool_reference": "DeFiLlama pool id: f981a304-bb6c-45b8-b0c5-fd2f515ad23a",
+      "pool_verification": "Aggregator pool id only; verify the exact pool, asset, chain, and terms with the original protocol before acting.",
+      "apy_base": 2.9283,
+      "apy_reward": null,
+      "apy_source_label": "Base APY",
+      "apy_composition": "base",
+      "pool_meta": "",
+      "reward_tokens": [],
+      "pool_url": "https://app.aave.com/",
+      "explorer_url": "https://etherscan.io/address/0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2",
+      "related_contracts": [
+        {
+          "label": "aEthUSDT",
+          "role": "Aave V3 Ethereum aToken for supplied USDT",
+          "address": "0x23878914EFE38d27C4D67Ab83ed1b93A74D4086a",
+          "explorer_url": "https://etherscan.io/address/0x23878914EFE38d27C4D67Ab83ed1b93A74D4086a"
+        },
+        {
+          "label": "USDT",
+          "role": "Underlying reserve asset",
+          "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+          "explorer_url": "https://etherscan.io/address/0xdAC17F958D2ee523a2206206994597C13D831ec7"
+        }
+      ],
+      "verification_sources": [
+        {
+          "label": "Aave address-book",
+          "url": "https://www.npmjs.com/package/@aave-dao/aave-address-book"
+        },
+        {
+          "label": "Aave tokenlist",
+          "url": "https://github.com/aave-dao/aave-address-book/blob/main/tokenlist.json"
+        },
+        {
+          "label": "Aave governance deployment reference",
+          "url": "https://governance.aave.com/t/bgd-aave-v3-ethereum-new-deployment-vs-aave-v2-upgrade/9990?page=2"
+        },
+        {
+          "label": "Etherscan address",
+          "url": "https://etherscan.io/address/0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2"
+        }
+      ],
+      "protocol_url": "https://app.aave.com/",
+      "docs_url": "https://aave.com/docs",
+      "security_url": "https://github.com/aave-dao/aave-v3-origin/tree/main/audits",
+      "risk_notes": [
+        "Aave positions depend on oracle pricing, liquidation parameters, interest-rate curves, and governance-controlled market settings",
+        "Supplying assets does not remove smart contract, bad-debt, asset issuer, or market liquidity risk"
+      ],
+      "score": 40,
+      "risk": "Medium",
+      "score_reasons": [
+        "Base DeFi smart contract and market risk",
+        "Data is from a third-party aggregator, not the original protocol",
+        "Audit status is not included in the source snapshot",
+        "Moderate TVL requires liquidity review"
+      ],
+      "verifiedAt": "2026-08-16T01:24:10.854030+00:00",
+      "verifiedSource": "https://api.v3.aave.com/graphql"
+    },
+    {
+      "id": "0ed981dc-b49d-426d-ade5-6014728b1ef9",
+      "chain": "Ethereum",
+      "protocol": "Sparklend",
+      "asset": "USDS",
+      "strategy": "Stable yield",
+      "apy": 2.04,
+      "tvl": 305789608.0,
+      "updated": "2026-08-16T01:24:07+00:00",
+      "source": "https://defillama.com/yields",
+      "source_label": "DeFiLlama Yields",
+      "contract": "0xC13e21B648A5Ee794902342038FF3aDAB66BE987",
+      "contract_address": "0xC13e21B648A5Ee794902342038FF3aDAB66BE987",
+      "contract_verification": "Manually matched to the Spark Address Registry on 2026-07-24. This is the SparkLend market-level Pool proxy. The related-contracts section lists the USDS reserve's spToken, debt token, and underlying token; none of these fields verify APY, TVL, reserve parameters, liquidity, or audit scope.",
+      "audit": "Not provided by DeFiLlama pool snapshot",
+      "factors": [
+        "APY and TVL are sourced from DeFiLlama's public yield snapshot",
+        "Stablecoin exposure still carries issuer, peg, and market risk",
+        "Spark savings exposure can depend on Sky rates, Spark allocation strategy, bridge deployment, and the backing of accepted assets",
+        "Official Spark materials should be checked for current audit report scope, bug bounty coverage, and product-specific withdrawal rules"
+      ],
+      "contract_role": "SparkLend Pool proxy, shared by multiple reserves",
+      "bridge_dependency": false,
+      "verified": false,
+      "source_pool_id": "0ed981dc-b49d-426d-ade5-6014728b1ef9",
+      "pool_reference": "DeFiLlama pool id: 0ed981dc-b49d-426d-ade5-6014728b1ef9",
+      "pool_verification": "Aggregator pool id only; verify the exact pool, asset, chain, and terms with the original protocol before acting.",
+      "apy_base": 2.0352,
+      "apy_reward": null,
+      "apy_source_label": "Base APY",
+      "apy_composition": "base",
+      "pool_meta": "",
+      "reward_tokens": [],
+      "pool_url": "https://app.spark.fi/",
+      "explorer_url": "https://etherscan.io/address/0xC13e21B648A5Ee794902342038FF3aDAB66BE987",
+      "related_contracts": [
+        {
+          "label": "USDS spToken",
+          "role": "SparkLend supplied USDS position token",
+          "address": "0xC02aB1A5eaA8d1B114EF786D9bde108cD4364359",
+          "explorer_url": "https://etherscan.io/address/0xC02aB1A5eaA8d1B114EF786D9bde108cD4364359"
+        },
+        {
+          "label": "USDS debt token",
+          "role": "SparkLend variable debt token for borrowed USDS",
+          "address": "0x8c147debea24Fb98ade8dDa4bf142992928b449e",
+          "explorer_url": "https://etherscan.io/address/0x8c147debea24Fb98ade8dDa4bf142992928b449e"
+        },
+        {
+          "label": "USDS",
+          "role": "Underlying reserve asset",
+          "address": "0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+          "explorer_url": "https://etherscan.io/address/0xdC035D45d973E3EC169d2276DDab16f1e407384F"
+        }
+      ],
+      "verification_sources": [
+        {
+          "label": "Spark deployments docs",
+          "url": "https://docs.spark.fi/dev/deployments/"
+        },
+        {
+          "label": "SparkLend address registry",
+          "url": "https://github.com/sparkdotfi/spark-address-registry/blob/master/src/SparkLend.sol"
+        },
+        {
+          "label": "Spark Ethereum address registry",
+          "url": "https://github.com/sparkdotfi/spark-address-registry/blob/master/src/Ethereum.sol"
+        },
+        {
+          "label": "Etherscan address",
+          "url": "https://etherscan.io/address/0xC13e21B648A5Ee794902342038FF3aDAB66BE987"
+        }
+      ],
+      "protocol_url": "https://spark.fi/",
+      "docs_url": "https://docs.spark.fi/",
+      "security_url": "https://spark.fi/",
+      "risk_notes": [
+        "Spark savings exposure can depend on Sky rates, Spark allocation strategy, bridge deployment, and the backing of accepted assets",
+        "Official Spark materials should be checked for current audit report scope, bug bounty coverage, and product-specific withdrawal rules"
+      ],
+      "score": 40,
+      "risk": "Medium",
+      "score_reasons": [
+        "Base DeFi smart contract and market risk",
+        "Data is from a third-party aggregator, not the original protocol",
+        "Audit status is not included in the source snapshot",
+        "Moderate TVL requires liquidity review"
+      ]
+    }
+  ]
+}

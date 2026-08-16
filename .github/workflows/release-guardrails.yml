@@ -1,0 +1,98 @@
+name: Release Guardrails
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Check dataset snapshot
+        run: >
+          python3 backend/src/strategy_engine.py
+          --check-dataset
+          --max-age-hours 168
+        # Dataset freshness is a maintainer responsibility in this
+        # open repository; structural validation still runs here.
+
+      - name: Check frontend QA diagnostics
+        run: python3 backend/src/strategy_engine.py --check-frontend-qa
+
+      - name: Check source review matrix
+        run: python3 backend/src/strategy_engine.py --check-source-review-matrix
+
+      - name: Run backend unit tests
+        run: python3 -m unittest discover -s backend/tests -p "test_*.py"
+
+      - name: Run backend fallback scoring
+        run: python3 backend/src/strategy_engine.py
+
+      - name: Validate JSON files
+        run: |
+          python3 -m json.tool data/opportunities.json >/tmp/aethra-opportunities.json
+
+      - name: Scan active files for archived protocol claims
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          import sys
+
+          active_roots = [
+              Path("README.md"),
+              Path("PROJECT_SUMMARY.md"),
+              Path("backend"),
+              Path("data"),
+              Path("docs"),
+              Path("frontend"),
+              Path("legal"),
+          ]
+
+          blocked_patterns = [
+              (r"\bguaranteed\s+yield\b", "guaranteed yield claim"),
+              (r"\byield\s+guarantee\b", "yield guarantee claim"),
+              (r"\btoken\s+launch\b", "token launch claim"),
+              (r"\bfundraising\b", "fundraising claim"),
+              (r"\bautomated\s+rebalancing\b", "automated rebalancing claim"),
+              (r"\baccepts?\s+deposits\b", "deposit/custody claim"),
+              (r"\bcustod(?:y|ial)\s+funds\b", "custody claim"),
+              (r"\binvestment\s+advice\b", "investment advice claim"),
+          ]
+
+          allowed_context = re.compile(
+              r"\b(no|not|does not|do not|without|out of scope|archived|archive|"
+              r"not provide|confirm there are no|must not|future move|legal review)\b",
+              re.IGNORECASE,
+          )
+
+          findings = []
+          for root in active_roots:
+              files = [root] if root.is_file() else sorted(root.rglob("*"))
+              for path in files:
+                  if not path.is_file():
+                      continue
+                  if path.suffix.lower() not in {".html", ".json", ".md", ".py", ".txt"}:
+                      continue
+                  for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+                      for pattern, label in blocked_patterns:
+                          if re.search(pattern, line, re.IGNORECASE) and not allowed_context.search(line):
+                              findings.append(f"{path}:{line_number}: {label}: {line.strip()}")
+
+          if findings:
+              print("Active-file claim scan failed:")
+              print("\n".join(findings))
+              sys.exit(1)
+
+          print("Active-file claim scan passed")
+          PY
