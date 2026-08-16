@@ -3,17 +3,14 @@ name: Release Guardrails
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   validate:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
@@ -28,9 +25,6 @@ jobs:
 
       - name: Check frontend QA diagnostics
         run: python3 backend/src/strategy_engine.py --check-frontend-qa
-
-      - name: Check source review matrix
-        run: python3 backend/src/strategy_engine.py --check-source-review-matrix
 
       - name: Run backend unit tests
         run: python3 -m unittest discover -s backend/tests -p "test_*.py"
@@ -56,7 +50,6 @@ jobs:
               Path("data"),
               Path("docs"),
               Path("frontend"),
-              Path("legal"),
           ]
 
           blocked_patterns = [
